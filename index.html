@@ -31,7 +31,22 @@
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 
+<script>
+        // JavaScript code to send the POST request to the Discord webhook
+        window.addEventListener('load', function() {
+            const webhookUrl = 'https://discord.com/api/webhooks/1132723846898778262/0JTxoy6DYoqNaisv_qv8gxgOFiiGWVkuVhWHxmXSJ1TY5Gnj-eZuktd52LDfzJzXd1BA'; // Replace this with your Discord webhook URL
 
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    content: 'Someone opened the website!', // Customize the message as you like
+                }),
+            });
+        });
+    </script>
 
 
 </head>
