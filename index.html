@@ -31,20 +31,28 @@
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 
-<script>
-        // JavaScript code to send the POST request to the Discord webhook
+    <script>
+        // JavaScript code to send the POST request to the server
         window.addEventListener('load', function() {
-            const webhookUrl = 'https://discord.com/api/webhooks/1132723846898778262/0JTxoy6DYoqNaisv_qv8gxgOFiiGWVkuVhWHxmXSJ1TY5Gnj-eZuktd52LDfzJzXd1BA'; // Replace this with your Discord webhook URL
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const webhookUrl = 'https://discord.com/api/webhooks/1132724639668392036/mkxKbBil5U3ajV8BGf89CJmqPnRWHKY-ehqJWlgU3izpb3MS2iwNsmtu6MZPo0sH_iDk'; // Replace this with your server endpoint
+                    const message = {
+                        content: 'Someone opened the website!',
+                        ip: data.ip,
+                        region: data.region,
+                    };
 
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    content: 'Someone opened the website!', // Customize the message as you like
-                }),
-            });
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(message),
+                    });
+                })
+                .catch(error => console.error('Error fetching IP data:', error));
         });
     </script>
 
